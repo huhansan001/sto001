@@ -118,8 +118,8 @@ iframe {
 	<script>
 		$(function(){
 			var res=getCookie($(".layui-nav-child").attr("id"));
-			$("#myImg").attr("src","/imgs/"+res);
-			$('#demo1').attr('src',"/imgs/"+res);
+			$("#myImg").attr("src","http://127.0.0.1:8080/stoMaven/imgs/"+res);
+			$('#demo1').attr('src',"http://127.0.0.1:8080/stoMaven/imgs/"+res);
 		});
 		layui.use(['layer','upload','jquery'], function() {
 			var $ = layui.jquery,
