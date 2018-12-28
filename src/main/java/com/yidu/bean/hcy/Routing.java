@@ -17,6 +17,13 @@ public class Routing implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private int id;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	private int shuttleId;//班车id
 	private String routingState;//路由状态
 	private String shuStaTime;//状态更新的时间
@@ -40,8 +47,8 @@ public class Routing implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Routing [shuttleId=" + shuttleId + ", routingState=" + routingState + ", shuStaTime=" + shuStaTime
-				+ "]";
+		return "Routing [id=" + id + ", shuttleId=" + shuttleId + ", routingState=" + routingState + ", shuStaTime="
+				+ shuStaTime + "]";
 	}
 	
 	
