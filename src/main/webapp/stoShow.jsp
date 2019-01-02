@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>申通后台管理系统</title>
+<link rel="shortcut icon" href="imgs/STO.jpg"/>
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport"
