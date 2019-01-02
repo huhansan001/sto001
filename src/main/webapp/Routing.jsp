@@ -66,7 +66,8 @@
 	    ,page: true //开启分页
 	    ,cols: [[
 	       {type: 'checkbox', fixed: 'left'}
-	      ,{field:'shuttleId',  title: '班车id', sort: true}
+	       ,{field:'id',  title: 'id', sort: true}
+	      ,{field:'shuttleId',  title: '班车id',edit: 'text'}
 	      ,{field:'routingState', title: '路由状态',edit: 'text'}
 	      ,{field:'shuStaTime',  title: '状态更新的时间',edit: 'text', sort: true}
 	      ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
@@ -85,9 +86,9 @@
 	        //layer.alert(JSON.stringify(data));
 	         for (var i in data){
 	        	  if(i==0){
-	        		  ids=ids+data[i].shuttleId;
+	        		  ids=ids+data[i].id;
 	        	  }else{
-	        		  ids=ids+"-"+data[i].shuttleId;
+	        		  ids=ids+"-"+data[i].id;
 	        	  }
 	        	  layer.close(i);
 	         }
@@ -124,7 +125,7 @@
 		        obj.del();
 		        layer.close(index);
 		        //layer.alert(data.shuttleId);
-		        $.post('delRouting.action','shuttleId='+data.shuttleId);
+		        $.post('delRouting.action','shuttleId='+data.id);
 		      });
 		    } else if(obj.event === 'edit'){
 		      $.post('upRouting.action',data);

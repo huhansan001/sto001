@@ -43,7 +43,7 @@ public interface RoutingMapper {
 	 * @date 2018年12月17日上午10:03:54
 	 * @return  返回是否删除成功
 	 */
-	@Delete("delete from routing_hcy where shuttleId=#{0}")
+	@Delete("delete from routing_hcy where id=#{0}")
 	public int delRouting(int shuttleId);
 	/**
 	 * 
@@ -51,6 +51,6 @@ public interface RoutingMapper {
 	 * @date 2018年12月17日上午10:03:54
 	 * @return  返回是否修改成功
 	 */
-	@Update("UPDATE routing_hcy SET routingState=#{routingState},shuStaTime=#{shuStaTime} WHERE shuttleId=#{shuttleId}")
+	@Update("UPDATE routing_hcy SET shuttleId=#{shuttleId},routingState=#{routingState},shuStaTime=#{shuStaTime} WHERE id=${id}")
 	public int upRouting(Routing routing);
 }
