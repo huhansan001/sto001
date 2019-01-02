@@ -19,7 +19,7 @@ public class ServiceTable_xwc implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private String orderNumber;//订单号
-	private int addresseeId;//收件人id
+	private int ordersId;//收件人id
 	private String orderStatus;//订单状态
 	private String remarks;//备注
 	private String customer;//客服
@@ -29,11 +29,11 @@ public class ServiceTable_xwc implements Serializable{
 	public void setOrderNumber(String orderNumber) {
 		this.orderNumber = orderNumber;
 	}
-	public int getAddresseeId() {
-		return addresseeId;
+	public int getordersId() {
+		return ordersId;
 	}
-	public void setAddresseeId(int addresseeId) {
-		this.addresseeId = addresseeId;
+	public void setordersId(int ordersId) {
+		this.ordersId = ordersId;
 	}
 	public String getOrderStatus() {
 		return orderStatus;
@@ -55,7 +55,7 @@ public class ServiceTable_xwc implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "ServiceTable [orderNumber=" + orderNumber + ", addresseeId=" + addresseeId + ", orderStatus="
+		return "ServiceTable [orderNumber=" + orderNumber + ", ordersId=" + ordersId + ", orderStatus="
 				+ orderStatus + ", remarks=" + remarks + ", customer=" + customer + "]";
 	}
 	

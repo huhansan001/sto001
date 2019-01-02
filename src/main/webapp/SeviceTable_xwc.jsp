@@ -108,7 +108,7 @@
 						field : 'orderNumber',
 						title : '订单号'
 					}, {
-						field : 'addresseeId',
+						field : 'ordersId',
 						edit : 'text',
 						title : '收件人id'
 					}, {
@@ -201,7 +201,7 @@
 				<div class="layui-form-item">
 					<label class="layui-form-label">收件人id</label>
 					<div class="layui-input-block">
-						<input type="text" name="addresseeId" autocomplete="off"
+						<input type="text" name="ordersId" autocomplete="off"
 							class="layui-input">
 					</div>
 				</div>

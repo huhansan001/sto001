@@ -41,7 +41,7 @@ public interface ServiceTableMapper_xwc {
 	 *功能：新增
 	 * @param serviceTable_xwc
 	 */
-	@Insert("insert into serviceTable_xwc (orderNumber,addresseeId,orderStatus,remarks,customer)VALUES ( ROUND(ROUND(RAND(),5)*100000),#{addresseeId},#{orderStatus},#{remarks},#{customer})")
+	@Insert("insert into serviceTable_xwc (orderNumber,ordersId,orderStatus,remarks,customer)VALUES ( ROUND(ROUND(RAND(),5)*100000),#{ordersId},#{orderStatus},#{remarks},#{customer})")
 	public void insertServiceTable(ServiceTable_xwc serviceTable_xwc);
 	/**
 	 * 
@@ -55,7 +55,7 @@ public interface ServiceTableMapper_xwc {
 	 *功能:修改
 	 * @param serviceTable_xwc
 	 */
-	@Update("update serviceTable_xwc set addresseeId=#{addresseeId},orderStatus=#{orderStatus},remarks=#{remarks},customer=#{customer} where orderNumber=#{orderNumber}")
+	@Update("update serviceTable_xwc set ordersId=#{ordersId},orderStatus=#{orderStatus},remarks=#{remarks},customer=#{customer} where orderNumber=#{orderNumber}")
 	public void updateServiceTable(ServiceTable_xwc serviceTable_xwc);
 	/**
 	 * 
