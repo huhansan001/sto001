@@ -8,22 +8,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.yidu.bean.lyq.Distribute;
 import com.yidu.service.lyq.PackageService;
 
 @Controller
 /**
  * 
- * 功能：控制层
- * @author 刘永琪
- * @date 2018年12月22日
+ * 鍔熻兘锛氭帶鍒跺眰
+ * @author 鍒樻案鐞�
+ * @date 2018骞�12鏈�22鏃�
  * @version V1.0
  */
 public class PackageAction {
 @Autowired 
 private PackageService packageService;
 /**
- * 功能：查询所有加分页
+ * 鍔熻兘锛氭煡璇㈡墍鏈夊姞鍒嗛〉
  * @param page
  * @param limit
  * @return
@@ -33,7 +32,7 @@ public @ResponseBody Map<String, Object> selectpackageAll(String page,String lim
 	return packageService.selectpackageAll(page,limit);
 }
 /**
- * 功能：新增一条数据
+ * 鍔熻兘锛氭柊澧炰竴鏉℃暟鎹�
  * @param packages
  * @return
  */
@@ -42,7 +41,7 @@ public @ResponseBody int  insertpackage(@ModelAttribute com.yidu.bean.lyq.Packag
 	return packageService.insertpackage(packages);
 }
 /**
- * 功能：修改
+ * 鍔熻兘锛氫慨鏀�
  * @param packages
  * @return
  */
@@ -53,7 +52,7 @@ public @ResponseBody  String updatepackage(@ModelAttribute com.yidu.bean.lyq.Pac
 	
 }
 /**
- * 功能：删除
+ * 鍔熻兘锛氬垹闄�
  * @param packages
  * @return
  */

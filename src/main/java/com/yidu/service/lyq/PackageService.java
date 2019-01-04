@@ -6,22 +6,21 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yidu.bean.lyq.Distribute;
 import com.yidu.dao.lyq.PackageMapper;
 
 @Service
 /**
  * 
- * 功能：业务层
- * @author 刘永琪
- * @date 2018年12月22日
+ * 鍔熻兘锛氫笟鍔″眰
+ * @author 鍒樻案鐞�
+ * @date 2018骞�12鏈�22鏃�
  * @version V1.0
  */
 public class PackageService {
 @Autowired
 private PackageMapper packageMapper;
 /**
- * 功能：实现查询所有和分页
+ * 鍔熻兘锛氬疄鐜版煡璇㈡墍鏈夊拰鍒嗛〉
  * @param page
  * @param rows
  * @return map
@@ -36,14 +35,14 @@ public Map<String, Object> selectpackageAll(String page,String rows){
 	
 }
 /**
- * 功能：实现新增
+ * 鍔熻兘锛氬疄鐜版柊澧�
  * @return
  */
 public int insertpackage(com.yidu.bean.lyq.Package packages) {
 	return packageMapper.insertpackage(packages);
 }
 /**
- * 功能：实现修改
+ * 鍔熻兘锛氬疄鐜颁慨鏀�
  * @return
  */
 public void updatepackage(com.yidu.bean.lyq.Package packages) {
@@ -51,7 +50,7 @@ public void updatepackage(com.yidu.bean.lyq.Package packages) {
 	
 }
 /**
- * 功能：实现删除
+ * 鍔熻兘锛氬疄鐜板垹闄�
  * @return
  */
 public void deletepackage(com.yidu.bean.lyq.Package packages) {
