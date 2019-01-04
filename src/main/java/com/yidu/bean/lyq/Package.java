@@ -3,11 +3,10 @@ package com.yidu.bean.lyq;
 import java.io.Serializable;
 import org.springframework.stereotype.Component;
 @Component
-/**
- * 
- * 功能：实体层
+/** 
+ * 功能：包裹表实体层
  * @author 刘永琪
- * @date 2018年12月22日
+ * @date 2019年1月4日
  * @version V1.0
  */
 public class Package implements Serializable {

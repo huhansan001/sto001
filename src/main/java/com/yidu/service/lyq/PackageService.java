@@ -11,19 +11,19 @@ import com.yidu.dao.lyq.PackageMapper;
 @Service
 /**
  * 
- * 鍔熻兘锛氫笟鍔″眰
- * @author 鍒樻案鐞�
- * @date 2018骞�12鏈�22鏃�
+ * 功能：业务层（接口）
+ * @author 刘永琪
+ * @date 2019年1月4日
  * @version V1.0
  */
 public class PackageService {
 @Autowired
 private PackageMapper packageMapper;
 /**
- * 鍔熻兘锛氬疄鐜版煡璇㈡墍鏈夊拰鍒嗛〉
+ * 功能:查询所有和分页
  * @param page
  * @param rows
- * @return map
+ * @return
  */
 public Map<String, Object> selectpackageAll(String page,String rows){
 	Map<String, Object> map=new HashMap<String,Object>();
@@ -35,23 +35,23 @@ public Map<String, Object> selectpackageAll(String page,String rows){
 	
 }
 /**
- * 鍔熻兘锛氬疄鐜版柊澧�
- * @return
+ * 功能:新增
+ * @param packages
  */
 public int insertpackage(com.yidu.bean.lyq.Package packages) {
 	return packageMapper.insertpackage(packages);
 }
 /**
- * 鍔熻兘锛氬疄鐜颁慨鏀�
- * @return
+ * 功能:修改
+ * @param packages
  */
 public void updatepackage(com.yidu.bean.lyq.Package packages) {
 	packageMapper.updatepackage(packages);
 	
 }
 /**
- * 鍔熻兘锛氬疄鐜板垹闄�
- * @return
+ * 功能:删除
+ * @param packages
  */
 public void deletepackage(com.yidu.bean.lyq.Package packages) {
 	packageMapper.deletepackage(packages);

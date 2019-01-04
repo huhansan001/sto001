@@ -12,17 +12,16 @@ import com.yidu.service.lyq.PackageService;
 
 @Controller
 /**
- * 
- * 鍔熻兘锛氭帶鍒跺眰
- * @author 鍒樻案鐞�
- * @date 2018骞�12鏈�22鏃�
+ * 功能：包裹表控制层
+ * @author 刘永琪
+ * @date 2019年1月4日
  * @version V1.0
  */
 public class PackageAction {
 @Autowired 
 private PackageService packageService;
 /**
- * 鍔熻兘锛氭煡璇㈡墍鏈夊姞鍒嗛〉
+ * 功能:查询所有和分页
  * @param page
  * @param limit
  * @return
@@ -32,7 +31,7 @@ public @ResponseBody Map<String, Object> selectpackageAll(String page,String lim
 	return packageService.selectpackageAll(page,limit);
 }
 /**
- * 鍔熻兘锛氭柊澧炰竴鏉℃暟鎹�
+ * 功能:新增一条数据
  * @param packages
  * @return
  */
@@ -41,7 +40,7 @@ public @ResponseBody int  insertpackage(@ModelAttribute com.yidu.bean.lyq.Packag
 	return packageService.insertpackage(packages);
 }
 /**
- * 鍔熻兘锛氫慨鏀�
+ * 功能:修改数据
  * @param packages
  * @return
  */
@@ -52,7 +51,7 @@ public @ResponseBody  String updatepackage(@ModelAttribute com.yidu.bean.lyq.Pac
 	
 }
 /**
- * 鍔熻兘锛氬垹闄�
+ * 功能:删除一条数据
  * @param packages
  * @return
  */
