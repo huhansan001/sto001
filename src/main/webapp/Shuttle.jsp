@@ -141,7 +141,7 @@
 							window.location.href="Shuttle.jsp";
 						} 
 					 }
-				 );
+				 ); 
 			  }
 		  }else{
 			  if(data.value%10!=0){
