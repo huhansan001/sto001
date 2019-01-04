@@ -73,7 +73,6 @@
 						});
 						 form.render('select');
 						form.on('select(interest)',function(data){
-							//alert($("select option[value='"+data.value+"']").text());
 							var select = $("select option[value='"+data.value+"']").text();
 							layui.use([ 'form', 'table', 'jquery', 'layer' ],function() {
 						    	var form = layui.form,
