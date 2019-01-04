@@ -19,7 +19,6 @@
 	<!-- 添加审核和入库按钮 -->
 	<script type="text/html" id="toolbarDemo">
   <div class="layui-btn-container">
-    <button class="layui-btn layui-btn-sm" lay-event="insert"><i class="layui-icon">&#xe654;</i>新增</button>
 	<button class="layui-btn layui-btn-sm layui-btn-normal" lay-event="approved">通过审核</button>
 	<button class="layui-btn layui-btn-sm layui-btn-normal" lay-event="unreviewed">未审核</button>
   </div>
@@ -29,125 +28,6 @@
   		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon">&#xe640;</i>删除</a>
 	</script>
 	<!-- 新增所有的表单  -->
-	<div class="layui-row" id="senderPnal" style="display: none;">
-		<div class="layui-col-md10">
-			<form action="empAdd.action" class="layui-form" id="addEmp">
-				<div class="layui-form-item">
-					<label class="layui-form-label">包裹id</label>
-					<div class="layui-input-block">
-						<input type="text" name="packageId" autocomplete="off"
-							class="layui-input">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">工单号</label>
-					<div class="layui-input-block">
-						<input type="text" name="workOrderNumber" autocomplete="off"
-							class="layui-input">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">寄件人姓名</label>
-					<div class="layui-input-block">
-						<input type="text" name="nameOfSender" autocomplete="off"
-							class="layui-input">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">寄件人地址</label>
-					<div class="layui-input-block">
-						<input type="text" name="senderAddress" autocomplete="off"
-							class="layui-input">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">寄件人详细地址</label>
-					<div class="layui-input-block">
-						<input type="text" name="fullAddressOfSender" autocomplete="off"
-							class="layui-input">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">寄件人电话</label>
-					<div class="layui-input-block">
-						<input type="text" name="sendersTelephoneNumber"
-							autocomplete="off" class="layui-input">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">收件人姓名</label>
-					<div class="layui-input-block">
-						<input type="text" name="addresseeName" autocomplete="off"
-							class="layui-input">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">收件人地址</label>
-					<div class="layui-input-block">
-						<input type="text" name="direction" autocomplete="off"
-							class="layui-input">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">收件人详细地址</label>
-					<div class="layui-input-block">
-						<input type="text" name="addresseeDetailedAddress"
-							autocomplete="off" class="layui-input">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">收件人电话</label>
-					<div class="layui-input-block">
-						<input type="text" name="addresseeTelephoneNumber"
-							autocomplete="off" class="layui-input">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">包裹重量</label>
-					<div class="layui-input-block">
-						<input type="text" name="theParcelWeighs" autocomplete="off"
-							class="layui-input">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">运费</label>
-					<div class="layui-input-block">
-						<input type="text" name="freight" autocomplete="off"
-							class="layui-input">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">审核状态</label>
-					<div class="layui-input-block">
-						<input type="text" name="auditStatus" autocomplete="off"
-							class="layui-input">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">运单号</label>
-					<div class="layui-input-block">
-						<input type="text" name="waybillNumber" autocomplete="off"
-							class="layui-input">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">备注</label>
-					<div class="layui-input-block">
-						<input type="text" name="remark" autocomplete="off"
-							class="layui-input">
-					</div>
-				</div>
-
-				<div class="layui-form-item" style="margin-left: 75px">
-					<div class="layui-input-block">
-						<button type="button" class="layui-btn" lay-submit=""
-							lay-filter="saveSender">保存</button>
-						<button type="button" class="layui-btn layui-layer-close">取消</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
 
 </body>
 <script>

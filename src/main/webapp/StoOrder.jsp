@@ -33,34 +33,112 @@
 		<div class="layui-col-md10">
 			<form action="empAdd.action" class="layui-form" id="addEmp">
 				<div class="layui-form-item">
+					<label class="layui-form-label">包裹id</label>
+					<div class="layui-input-block">
+						<input type="text" name="packageId" autocomplete="off"
+							class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
 					<label class="layui-form-label">工单号</label>
 					<div class="layui-input-block">
-						<input type="text" name="workerNumber" readonly="readonly" value="<%=(int)((Math.random()*9+1)*10000000)%>"  autocomplete="off"
+						<input type="text" name="workOrderNumber" autocomplete="off"
 							class="layui-input">
 					</div>
 				</div>
 				<div class="layui-form-item">
-					<label class="layui-form-label">员工编号</label>
+					<label class="layui-form-label">寄件人姓名</label>
 					<div class="layui-input-block">
-						<input type="text" name="employeeNumber" autocomplete="off"
+						<input type="text" name="nameOfSender" autocomplete="off"
 							class="layui-input">
 					</div>
 				</div>
 				<div class="layui-form-item">
-					<label class="layui-form-label">订单号</label>
+					<label class="layui-form-label">寄件人地址</label>
 					<div class="layui-input-block">
-						<input type="text" name="orderNumber" autocomplete="off"
+						<input type="text" name="senderAddress" autocomplete="off"
 							class="layui-input">
 					</div>
 				</div>
 				<div class="layui-form-item">
-					<label class="layui-form-label">收件时间</label>
+					<label class="layui-form-label">寄件人详细地址</label>
 					<div class="layui-input-block">
-						<input type="text" name="serviceHours" autocomplete="off"
+						<input type="text" name="fullAddressOfSender" autocomplete="off"
 							class="layui-input">
 					</div>
 				</div>
-				<div class="layui-form-item" style="margin-left: 50px">
+				<div class="layui-form-item">
+					<label class="layui-form-label">寄件人电话</label>
+					<div class="layui-input-block">
+						<input type="text" name="sendersTelephoneNumber"
+							autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">收件人姓名</label>
+					<div class="layui-input-block">
+						<input type="text" name="addresseeName" autocomplete="off"
+							class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">收件人地址</label>
+					<div class="layui-input-block">
+						<input type="text" name="direction" autocomplete="off"
+							class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">收件人详细地址</label>
+					<div class="layui-input-block">
+						<input type="text" name="addresseeDetailedAddress"
+							autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">收件人电话</label>
+					<div class="layui-input-block">
+						<input type="text" name="addresseeTelephoneNumber"
+							autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">包裹重量</label>
+					<div class="layui-input-block">
+						<input type="text" name="theParcelWeighs" autocomplete="off"
+							class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">运费</label>
+					<div class="layui-input-block">
+						<input type="text" name="freight" autocomplete="off"
+							class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">审核状态</label>
+					<div class="layui-input-block">
+						<input type="text" name="auditStatus" autocomplete="off"
+							class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">运单号</label>
+					<div class="layui-input-block">
+						<input type="text" name="waybillNumber" autocomplete="off"
+							class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">备注</label>
+					<div class="layui-input-block">
+						<input type="text" name="remark" autocomplete="off"
+							class="layui-input">
+					</div>
+				</div>
+
+				<div class="layui-form-item" style="margin-left: 40px">
 					<div class="layui-input-block">
 						<button type="button" class="layui-btn" lay-submit=""
 							lay-filter="saveSender">保存</button>
@@ -77,7 +155,7 @@
 							var form = layui.form, layer = layui.layer, element = layui.element, table = layui.table, $ = layui.jquery;
 							//form表单提交监听事件
 							form.on('submit(saveSender)', function(data) {
-								$.post('insert.action', data.field, function(
+								$.post('insertpackage.action', data.field, function(
 										msg) {
 									layer.msg(msg);
 									window.location.href = "StoOrder.jsp";
