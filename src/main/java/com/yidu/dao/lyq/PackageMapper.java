@@ -9,6 +9,8 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
+import com.yidu.bean.lyq.Package;
+
 
 @Repository
 /**
@@ -49,4 +51,12 @@ public void updatepackage(com.yidu.bean.lyq.Package packages);
  */
 @Delete("delete from package_lyq where packageId=#{packageId}")
 public void deletepackage(com.yidu.bean.lyq.Package packages);
+
+/**
+ * 功能：根据ID查询所有
+ * @param packageId
+ * @return
+ */
+@Select("SELECT * FROM package_lyq WHERE packageId=${packageId}")
+public List<Package> packageAll(@Param("packageId") String packageId);
 }
