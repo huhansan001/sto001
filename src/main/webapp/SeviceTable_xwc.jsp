@@ -183,7 +183,7 @@
 			//监听行工具事件
 			table.on('toolbar(SeviceTable_xwc)', function(obj) {
 				var data = obj.data;
-				 var checkStatus = table.checkStatus(obj.config.id),datas = checkStatus.data;;
+				 var checkStatus = table.checkStatus(obj.config.id),datas = checkStatus.data;
 				if (obj.event === 'insert') {
 					layer.open({
 						type : 1,
