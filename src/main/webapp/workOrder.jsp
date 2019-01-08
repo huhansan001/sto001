@@ -55,7 +55,7 @@
 		      case 'sendPage':
 		        var data = checkStatus.data;
 		       // layer.alert(JSON.stringify(data));
-		       layer.msg('选中了：'+ data.length + ' 个');
+		       layer.msg('派件了：'+ data.length + ' 个');
 		      break;
 		     /*  case 'getCheckLength':
 			        var data = checkStatus.data;
