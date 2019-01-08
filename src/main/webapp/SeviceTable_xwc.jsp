@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,14 @@
 <script type="text/javascript" src="layui/layui.all.js" charset="utf-8"></script>
 </head>
 <body>
+	<%!HttpServletRequest request;HttpServletResponse response;%>
+	<%
+		if(request.getSession().getAttribute("empName")==null){
+			response.sendRedirect(request.getContextPath()+"/selectServiceTableCourier.action");
+		}
+	%>
+
+
 	<div class="demoTable"
 		style="position: absolute; left: 90px; top: 22px; z-index: 99999999999999999999999999999999999999999999999999999999999;">
 		搜索ID：
@@ -30,12 +39,27 @@
   <div class="layui-btn-container">
     <button class="layui-btn layui-btn-sm" lay-event="insert"><i class="layui-icon">&#xe654;</i>新增</button>
 </div>
+
+<form class="layui-form" action="" style="position:absolute;left:400px;bottom:-12px;">
+		 <div class="layui-form-item">
+    	<div class="layui-input-inline">
+    	 <select name="courier" id="courier" lay-filter="courier">
+       		<option value="" class="select">请选择收件员</option>
+			<c:forEach items="${empName}" var="x">
+			<option value='${x.empNo}'  class="selects">${x.empName}</option>
+			</c:forEach>
+      	</select>
+   	 	</div>
+		<button type="button" lay-submit=""class="layui-btn layui-btn-warm layui-btn-stm" lay-event="paijian" id="paijian" ">派件</button>
+  		</div>
+	</form>
+
 	<form class="layui-form" action="" style="position:absolute;right:120px;bottom:-10px;">
 		 <div class="layui-form-item">
    	 <label class="layui-form-label" style="width:100px;">订单状态</label>
     	<div class="layui-input-inline">
     	 <select name="interest" id="interest" lay-filter="interest">
-       		<option value="" class="select">请选择</option>
+       		<option value="0" class="select">请选择</option>
 			<option value="1" class="select">已取消</option>
 			<option value="2" class="select">处理中</option>
 			<option value="3" class="select">已处理</option>
@@ -133,6 +157,9 @@
 					id: 'testReload',
 				   });
 				
+				
+				
+				 //监听头工具栏事件
 				/////////////////////////////////////////////////////////////////
 				 
 			  $('.demoTable .layui-btn').on('click', function(){
@@ -156,6 +183,7 @@
 			//监听行工具事件
 			table.on('toolbar(SeviceTable_xwc)', function(obj) {
 				var data = obj.data;
+				 var checkStatus = table.checkStatus(obj.config.id),datas = checkStatus.data;;
 				if (obj.event === 'insert') {
 					layer.open({
 						type : 1,
@@ -169,6 +197,25 @@
 							});
 						}
 					});
+				}else if(obj.event === "paijian"){
+					if(datas.length>0){
+						//派件员id
+						var empNo=$("#courier").val();
+						if(empNo!=""){
+							var orderNumber="";
+							for (var i in datas) {
+								if(i==0)
+									orderNumber = datas[i].orderNumber;
+								else
+								orderNumber = orderNumber+"-"+datas[i].orderNumber;
+							}
+							alert("员工编号："+empNo+"\n订单号:"+orderNumber);
+						}else{
+							layer.msg("请选择派件员！");
+						}
+					}else{
+						layer.msg("抱歉,你没有选中数据！");
+					}
 				}
 			})
 			table.on('edit(SeviceTable_xwc)', function(objs) {
@@ -186,6 +233,7 @@
 					});
 					layer.msg("删除成功！");
 				}
+				
 			});
 			});
 			
@@ -235,5 +283,6 @@
 			</form>
 		</div>
 	</div>
+	<%request.getSession().setAttribute("empName", null);%>
 </body>
 </html>

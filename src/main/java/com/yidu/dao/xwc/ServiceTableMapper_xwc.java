@@ -1,5 +1,6 @@
 package com.yidu.dao.xwc;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
@@ -72,4 +73,16 @@ public interface ServiceTableMapper_xwc {
 	 */
 	@Select("SELECT * FROM serviceTable_xwc WHERE orderStatus=#{select}")
 	public List<ServiceTable_xwc> selectServiceTableStatus(@Param("select") String select);
+	
+	
+	/**
+	 * 
+	 *功能：收件人的下拉列表
+	 * @param 
+	 * @return
+	 */
+	@Select("SELECT c.empName,a.empNo FROM positioninfo a,positions b,stoemp c WHERE a.posiId=b.posiId AND c.empNo=a.empNo AND b.posiId=7")
+	public List<HashMap<String, Object>> selectServiceTableCourier();
+	
+	
 }

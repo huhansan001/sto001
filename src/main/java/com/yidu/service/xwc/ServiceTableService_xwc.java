@@ -1,6 +1,7 @@
 package com.yidu.service.xwc;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,4 +73,13 @@ public class ServiceTableService_xwc {
 	public void updateServiceTable(ServiceTable_xwc serviceTable_xwc) {
 		serviceTableMapper_xwc.updateServiceTable(serviceTable_xwc);
 	}
+	/**
+	 * 
+	 *功能：显示收件人
+	 * @return
+	 */
+	public List<HashMap<String, Object>> selectServiceTableCourier(){
+		return	serviceTableMapper_xwc.selectServiceTableCourier();
+	}
+	
 }

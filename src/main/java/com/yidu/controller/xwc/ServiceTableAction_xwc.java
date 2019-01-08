@@ -1,12 +1,19 @@
 package com.yidu.controller.xwc;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.yidu.bean.xwc.ServiceTable_xwc;
 import com.yidu.service.xwc.ServiceTableService_xwc;
@@ -29,7 +36,7 @@ public class ServiceTableAction_xwc {
 	 * @return
 	 */
 	@RequestMapping("selectServiceTableAll.action")
-	public @ResponseBody Map<String, Object> selectServiceTableAll(String page,String limit,String id,String select){
+	public @ResponseBody Map<String, Object> selectServiceTableAll(String page,String limit,String id,String select,HttpServletRequest request){
 		//调用业务层的方法
 		return serviceTableService_xwc.selectServiceTableAll(page,limit,id,select);
 	}
@@ -69,5 +76,24 @@ public class ServiceTableAction_xwc {
 		//调用业务层的方法
 		serviceTableService_xwc.updateServiceTable(serviceTable_xwc);
 		return "ok";
+	}
+	
+	
+	/**
+	 * 
+	 *功能：查询所有
+	 * @return
+	 */
+	@RequestMapping("selectServiceTableCourier.action")
+	public  void selectServiceTableCourier(HttpServletRequest request,HttpServletResponse response){
+		//调用业务层的方法
+		request.getSession().setAttribute("empName", serviceTableService_xwc.selectServiceTableCourier());
+		try {
+			response.sendRedirect("SeviceTable_xwc.jsp");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//return  new ModelAndView("SeviceTable_xwc.jsp");
 	}
 }
