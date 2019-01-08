@@ -23,8 +23,7 @@
   		<div class="layui-btn-container" >
     	<button type="button" lay-submit=""
 		class="layui-btn layui-btn-radius
-		layui-btn-stm" lay-event="sendPage" style="margin-left: 25px;">一键派件</button>
-  <button class="layui-btn layui-btn-sm" lay-event="insert" style="margin-left: 100px;"><i class="layui-icon">&#xe654;</i>新增</button>  		
+		layui-btn-stm" lay-event="sendPage" style="margin-left: 25px;">点击派件</button>
 </div>
 
 	</script>
@@ -36,50 +35,6 @@
   		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon">&#xe640;</i>删除</a>
 
 </script>
-
-<!-- 新增的面板 -->
-
-<div class="layui-row" id="certificationPnal" style="display: none;">
-		<div class="layui-col-md10">
-			<form action="empAdd.action" class="layui-form" id="addEmp">
-				 
-				  <div class="layui-form-item">
-				    <label class="layui-form-label">包裹id</label>
-				    <div class="layui-input-block">
-				      <input type="text" name="packageId" autocomplete="off" class="layui-input">
-				    </div>
-				  </div>
-				  <div class="layui-form-item">
-				    <label class="layui-form-label">员工编号</label>
-				    <div class="layui-input-block">
-				      <input type="text" name="empNo" autocomplete="off" class="layui-input">
-				    </div>
-				  </div>
-				  <div class="layui-form-item">
-				    <label class="layui-form-label">派发时间</label>
-				    <div class="layui-input-block">
-				      <input type="text" name="sendTime" autocomplete="off" class="layui-input">
-				    </div>
-				  </div>
-				  <div class="layui-form-item">
-				    <label class="layui-form-label">工作状态</label>
-				    <div class="layui-input-block">
-				      <input type="text" name="worksheet" autocomplete="off" class="layui-input">
-				    </div>
-		
-				  
-				  
-				<div class="layui-form-item" style="margin-left: 50px; margin-top: 20px">
-				    <div class="layui-input-block">
-				      <button type="button" class="layui-btn" lay-submit="" lay-filter="saveCertification">保存</button>
-				      <button type="button" class="layui-btn layui-layer-close">取消</button>
-				    </div>
-				  </div>
-			</form>
-		</div>
-	</div>
-
-
 
 
 <!-- js代码 -->
@@ -111,27 +66,7 @@
 		     		 break; */
 		    };
 		  });
-		
-			
-		/*
-		//新增监听事件
-				table.on('toolbar(workOrder)', function(obj) {
-					var data=obj.data;
-					 if (obj.event === 'insert') {
-						 layer.open({
-							 type :1,
-							 title :'新增',
-							 anim:6,
-							 content :$("#certificationPnal"),
-							 area: ['430px', '500px'],
-							 cancel:function(){
-								$("#certificationPnal").css({"display":"none"});
-							}
-						});
-					 }
-				}) */
-			 
-		 
+					
 		 
 		 table.on('edit(workOrder)', function(objs) {
 				layer.msg("编辑一行完毕后，请点击 右侧的 确认编辑");

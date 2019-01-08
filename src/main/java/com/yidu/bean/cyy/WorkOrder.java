@@ -1,9 +1,13 @@
 package com.yidu.bean.cyy;
+
+import org.springframework.stereotype.Component;
+
 /**
  * 描述：工单表类
  * @author Administrator
  *
  */
+@Component
 public class WorkOrder {
 	private int packageId;//包裹id
 	private String empNo;//员工编号
