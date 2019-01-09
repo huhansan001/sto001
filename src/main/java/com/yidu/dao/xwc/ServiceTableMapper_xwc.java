@@ -1,5 +1,6 @@
 package com.yidu.dao.xwc;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
@@ -41,7 +42,7 @@ public interface ServiceTableMapper_xwc {
 	 *功能：新增
 	 * @param serviceTable_xwc
 	 */
-	@Insert("insert into serviceTable_xwc (orderNumber,addresseeId,orderStatus,remarks,customer)VALUES ( ROUND(ROUND(RAND(),5)*100000),#{addresseeId},#{orderStatus},#{remarks},#{customer})")
+	@Insert("insert into serviceTable_xwc (orderNumber,ordersId,orderStatus,remarks,customer)VALUES ( ROUND(ROUND(RAND(),5)*100000),#{ordersId},#{orderStatus},#{remarks},#{customer})")
 	public void insertServiceTable(ServiceTable_xwc serviceTable_xwc);
 	/**
 	 * 
@@ -55,7 +56,7 @@ public interface ServiceTableMapper_xwc {
 	 *功能:修改
 	 * @param serviceTable_xwc
 	 */
-	@Update("update serviceTable_xwc set addresseeId=#{addresseeId},orderStatus=#{orderStatus},remarks=#{remarks},customer=#{customer} where orderNumber=#{orderNumber}")
+	@Update("update serviceTable_xwc set ordersId=#{ordersId},orderStatus=#{orderStatus},remarks=#{remarks},customer=#{customer} where orderNumber=#{orderNumber}")
 	public void updateServiceTable(ServiceTable_xwc serviceTable_xwc);
 	/**
 	 * 
@@ -72,4 +73,16 @@ public interface ServiceTableMapper_xwc {
 	 */
 	@Select("SELECT * FROM serviceTable_xwc WHERE orderStatus=#{select}")
 	public List<ServiceTable_xwc> selectServiceTableStatus(@Param("select") String select);
+	
+	
+	/**
+	 * 
+	 *功能：收件人的下拉列表
+	 * @param 
+	 * @return
+	 */
+	@Select("SELECT c.empName,a.empNo FROM positioninfo a,positions b,stoemp c WHERE a.posiId=b.posiId AND c.empNo=a.empNo AND b.posiId=7")
+	public List<HashMap<String, Object>> selectServiceTableCourier();
+	
+	
 }
