@@ -78,6 +78,7 @@ public class ComPackageService {
 	public int upComPackage(ComPackage comPackage) {
 		return comPackageMapper.upComPackage(comPackage);
 	}
+	
 	/**
 	 * 
 	 * @Explain  Ò»¼üºÏ°ü
