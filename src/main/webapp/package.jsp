@@ -142,7 +142,7 @@
 		});
 		//监听行工具事件
 		table.on('toolbar(package)', function(obj) {
-			var data = obj.data;
+			var checkStatus = table.checkStatus(obj.config.id), data = checkStatus.data,ids="";
 			if (obj.event === 'insert') {
 				layer.open({
 					type : 1,
@@ -156,6 +156,43 @@
 						});
 					}
 				});
+			}else if(obj.event === "approved"){
+				if(data.length>0){
+					for (var i in data) {
+						if(i==0){
+							ids=ids+data[i].packageId;
+						}else{
+							ids=ids+"-"+data[i].packageId;
+						}
+					}
+
+					$.post('updateState.action',"ids="+ids);
+					$.ajax({
+						type:"POST",
+						url:"update.action",
+						data:"packageId="+ids,
+						succecess:function(data){
+							$.post('updateState.action',"ids="+ids)
+						}
+					});
+					$(".layui-laypage-btn")[0].click(); 
+				}else{
+					layer.msg("请选择数据");
+				}
+			}else if(obj.event === "unreviewed"){
+				if(data.length>0){
+					for (var i in data) {
+						if(i==0){
+							ids=ids+data[i].packageId;
+						}else{
+							ids=ids+"-"+data[i].packageId;
+						}
+					}
+					$.post('updateState1.action',"ids="+ids);
+					$(".layui-laypage-btn")[0].click(); 
+				}else{
+					layer.msg("请选择数据");
+				}
 			}
 		})
 

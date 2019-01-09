@@ -57,6 +57,28 @@ public void deletepackage(com.yidu.bean.lyq.Package packages) {
 	packageMapper.deletepackage(packages);
 	
 }
-
-
+/**
+ * 功能:修改审核状态
+ * @param packages
+ */
+public void updateState(String ids) {
+	System.out.println(ids);
+	
+	String[] idss=ids.split("-");
+	for (int i = 0; i <idss.length ; i++) {
+		packageMapper.updateState(idss[i],"审核通过");
+	}
+}
+/**
+ * 功能:修改审核状态
+ * @param packages
+ */
+public void updateState1(String ids) {
+	System.out.println(ids);
+	
+	String[] idsss=ids.split("-");
+	for (int i = 0; i <idsss.length ; i++) {
+		packageMapper.updateState1(idsss[i],"未通过审核");
+	}
+}
 }

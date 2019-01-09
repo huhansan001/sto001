@@ -42,6 +42,10 @@ public class WarehouseService {
 	public void insertdistribute(Warehouse WarehouseMapper) {
 		 waehouse.insertdistribute(WarehouseMapper);
 	}
+	public void IDUPDATE(Warehouse packageId) {
+		System.out.println(packageId);
+		 waehouse.IDUPDATE(packageId);
+	}
 	 /**
 	  * 功能：实现修改
 	  * @return

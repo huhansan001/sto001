@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/yidu/controller/lyq/PackageAction.java=UTF-8
 encoding//src/main/java/com/yidu/dao/lyq=UTF-8
 encoding//src/main/java/com/yidu/dao/lyq/PackageMapper.java=UTF-8
 encoding//src/main/java/com/yidu/service/lyq/PackageService.java=UTF-8

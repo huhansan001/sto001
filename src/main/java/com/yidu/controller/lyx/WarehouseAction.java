@@ -41,6 +41,15 @@ public class WarehouseAction {
 		System.out.println(warehouse.toString());
 		return "ok";	
 	}
+	@RequestMapping("update.action")
+	public @ResponseBody String UPDATE(@ModelAttribute Warehouse packageId){
+	
+		System.out.println(packageId+"laile ");
+		
+		warehouseService.IDUPDATE(packageId);
+		System.out.println(packageId);
+		return "ok";	
+	}
 	/**
 	 * ¹¦ÄÜ£ºÐÞ¸Ä
 	 * @param packages

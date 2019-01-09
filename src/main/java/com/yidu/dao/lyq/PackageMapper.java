@@ -59,4 +59,15 @@ public void deletepackage(com.yidu.bean.lyq.Package packages);
  */
 @Select("SELECT * FROM package_lyq WHERE packageId=${packageId}")
 public List<Package> packageAll(@Param("packageId") String packageId);
+/**
+ * 功能：根据ID修改审核状态
+ */
+@Update("UPDATE package_lyq SET auditStatus=#{sk} WHERE  packageId=#{ids} ")
+public void updateState(@Param("ids")String ids, @Param("sk") String sk);
+
+/**
+ * 功能：根据ID修改审核状态
+ */
+@Update("UPDATE package_lyq SET auditStatus=#{s} WHERE  packageId=#{ids} ")
+public void updateState1(@Param("ids")String ids, @Param("s") String s);
 }

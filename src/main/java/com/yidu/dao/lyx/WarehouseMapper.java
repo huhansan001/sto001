@@ -38,7 +38,11 @@ public interface WarehouseMapper  {
 	 * @return
 	 */
 	@Insert("INSERT INTO warehouse_lyx(packageId,courier,whether,unloading) VALUES(#{packageId},#{courier},#{whether},#{unloading})")
-	public int insertdistribute(Warehouse warehouseMapper);
+	public int insertdistribute(Warehouse warehouseMapper);	
+	
+@Insert("INSERT INTO warehouse_lyx(packageId,courier,whether,unloading) VALUES(#{packageId},'无','无','无')")
+//	@Insert("INSERT INTO warehouse_lyx(packageId) VALUES(#{packageId})")
+	public int IDUPDATE(Warehouse packageId);
 	/**
 	 * 功能：根据ID修改的方法
 	 * @return
@@ -49,7 +53,7 @@ public interface WarehouseMapper  {
 	 * 功能：根据ID删除的方法
 	 * @return
 	 */	
-	@Delete("delete from warehouse_lyx where packageId=#{packageId} ")
+	@Delete("delete from warehouse_lyx where packageId=#{packageId}")
 	public void deletedistribute(Warehouse warehouseMapper);
 }
 
