@@ -96,7 +96,6 @@ public class ComPackageService {
 		List<Shuttle> pageShuttle = shuttleMapper.pageShuttle();
 		//循环每一辆班车
 		for (Shuttle shuttle : pageShuttle) {
-			//System.out.println("班车号："+shuttle.getGoodsNo());
 			//得到班车到站地址的站点
 			String [] stand = shuttle.getStand().split("-");
 			//循环每辆班车的到站地址
