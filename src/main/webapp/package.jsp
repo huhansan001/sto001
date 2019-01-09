@@ -20,7 +20,7 @@
 	<script type="text/html" id="toolbarDemo">
   <div class="layui-btn-container">
 	<button class="layui-btn layui-btn-sm layui-btn-normal" lay-event="approved">通过审核</button>
-	<button class="layui-btn layui-btn-sm layui-btn-normal" lay-event="unreviewed">未审核</button>
+	<button class="layui-btn layui-btn-sm layui-btn-normal" lay-event="unreviewed">未通过审核</button>
   </div>
 </script>
 	<script type="text/html" id="barDemo">
@@ -158,38 +158,53 @@
 				});
 			}else if(obj.event === "approved"){
 				if(data.length>0){
-					for (var i in data) {
-						if(i==0){
-							ids=ids+data[i].packageId;
+					if(data.length<2){
+						if(data[0].auditStatus=="审核通过" || data[0].auditStatus=="未通过审核"){
+							layer.msg("您已经审核过了");
 						}else{
-							ids=ids+"-"+data[i].packageId;
+							for (var i in data) {
+								if(i==0){
+									ids=ids+data[i].packageId;
+								}else{
+									ids=ids+"-"+data[i].packageId;
+								}
+							}
+							$.post('updateState.action',"ids="+ids);
+							$.ajax({
+								type:"POST",
+								url:"update.action",
+								data:"packageId="+ids,
+								success:function(data){
+									//$.post('updateState.action',"ids="+ids)
+								}
+							});
+							$(".layui-laypage-btn")[0].click(); 
 						}
+					}else{
+						layer.msg("只能选择一行数据");
 					}
-
-					$.post('updateState.action',"ids="+ids);
-					$.ajax({
-						type:"POST",
-						url:"update.action",
-						data:"packageId="+ids,
-						succecess:function(data){
-							$.post('updateState.action',"ids="+ids)
-						}
-					});
-					$(".layui-laypage-btn")[0].click(); 
 				}else{
 					layer.msg("请选择数据");
 				}
 			}else if(obj.event === "unreviewed"){
 				if(data.length>0){
-					for (var i in data) {
-						if(i==0){
-							ids=ids+data[i].packageId;
+					if(data.length<2){
+						if(data[0].auditStatus=="审核通过" || data[0].auditStatus=="未通过审核"){
+							layer.msg("您已经审核过了");
 						}else{
-							ids=ids+"-"+data[i].packageId;
+						for (var i in data) {
+							if(i==0){
+								ids=ids+data[i].packageId;
+							}else{
+								ids=ids+"-"+data[i].packageId;
+							}
 						}
+						$.post('updateState1.action',"ids="+ids);
+						$(".layui-laypage-btn")[0].click(); 
+						}
+					}else{
+						layer.msg("只能选择一行数据");
 					}
-					$.post('updateState1.action',"ids="+ids);
-					$(".layui-laypage-btn")[0].click(); 
 				}else{
 					layer.msg("请选择数据");
 				}

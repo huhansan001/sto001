@@ -17,9 +17,17 @@ public class ComPackage implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private int comPackageId;
 	private int shuttleId;//班车id
-	private int packageId;//包裹id
+	private String packageId;//包裹id
 	private String dotName;//到站地址（网点id）
+	
+	public int getComPackageId() {
+		return comPackageId;
+	}
+	public void setComPackageId(int comPackageId) {
+		this.comPackageId = comPackageId;
+	}
 	public int getShuttleId() {
 		return shuttleId;
 	}
@@ -35,15 +43,27 @@ public class ComPackage implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	public int getPackageId() {
+	public String getPackageId() {
 		return packageId;
 	}
-	public void setPackageId(int packageId) {
+	public void setPackageId(String packageId) {
 		this.packageId = packageId;
+	}
+	
+	public ComPackage(int shuttleId, String packageId, String dotName) {
+		super();
+		this.shuttleId = shuttleId;
+		this.packageId = packageId;
+		this.dotName = dotName;
+	}
+	
+	public ComPackage() {
+		super();
 	}
 	@Override
 	public String toString() {
-		return "ComPackage [shuttleId=" + shuttleId + ", packageId=" + packageId + ", dotName=" + dotName + "]";
+		return "ComPackage [comPackageId=" + comPackageId + ", shuttleId=" + shuttleId + ", packageId=" + packageId
+				+ ", dotName=" + dotName + "]";
 	}
 	
 }

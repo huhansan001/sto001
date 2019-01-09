@@ -40,7 +40,7 @@ public interface WarehouseMapper  {
 	@Insert("INSERT INTO warehouse_lyx(packageId,courier,whether,unloading) VALUES(#{packageId},#{courier},#{whether},#{unloading})")
 	public int insertdistribute(Warehouse warehouseMapper);	
 	
-@Insert("INSERT INTO warehouse_lyx(packageId,courier,whether,unloading) VALUES(#{packageId},'无','无','无')")
+@Insert("INSERT INTO warehouse_lyx(packageId,courier,whether,unloading) VALUES(#{packageId},'无','未合包','无')")
 //	@Insert("INSERT INTO warehouse_lyx(packageId) VALUES(#{packageId})")
 	public int IDUPDATE(Warehouse packageId);
 	/**

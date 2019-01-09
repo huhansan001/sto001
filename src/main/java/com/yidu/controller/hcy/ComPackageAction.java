@@ -64,4 +64,15 @@ public class ComPackageAction {
 	public @ResponseBody int upComPackage(ComPackage comPackage){
 		return comPackageService.upComPackage(comPackage);
 	}
+	/**
+	 * 
+	 * @Explain:一键合包
+	 * @date 2018年12月17日上午11:35:19
+	 * @param Province
+	 * @return
+	 */
+	@RequestMapping("comPackage.action")
+	public @ResponseBody String comPackage(String ids){
+		return comPackageService.comPackage(ids);
+	}
 }

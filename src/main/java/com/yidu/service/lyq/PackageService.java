@@ -63,7 +63,6 @@ public void deletepackage(com.yidu.bean.lyq.Package packages) {
  */
 public void updateState(String ids) {
 	System.out.println(ids);
-	
 	String[] idss=ids.split("-");
 	for (int i = 0; i <idss.length ; i++) {
 		packageMapper.updateState(idss[i],"审核通过");

@@ -18,10 +18,10 @@
 	<!-- 添加一个新增按钮 -->
 	<script type="text/html" id="toolbarDemo">
   <div class="layui-btn-container">
-    <button class="layui-btn layui-btn-sm" lay-event="insert"><i class="layui-icon">&#xe654;</i>新增</button>   
+    <button class="layui-btn layui-btn-sm" lay-event="comPackage"><i class="layui-icon">&#xe654;</i>合包</button>   
 </div>
     <!--选择派件员派件-->
-         <form class="layui-form" action=""style="width: 371px;position: absolute;left: 200px;bottom: -9px;">
+         <form class="layui-form" action=""style="width: 371px;position: absolute;left: 70px;bottom: -9px;">
         <div class="layui-form-item">
        <label style="width: 100px;" class="layui-form-label">选择派件员</label>
       <div class="layui-input-inline">
@@ -132,7 +132,7 @@
 
 			}, {
 				field : 'whether',
-				title : '是否派件',
+				title : '合包状态',
 
 			}, {
 				field : 'unloading',
@@ -147,7 +147,7 @@
 		});
 		//监听行工具事件
 		table.on('toolbar(distribute)', function(obj) {
-			var data = obj.data;
+			var checkStatus = table.checkStatus(obj.config.id),data = checkStatus.data,ids="";
 			if (obj.event === 'insert') {
 				layer.open({
 					type : 1,
@@ -161,6 +161,25 @@
 						});
 					}
 				});
+			}else if(obj.event === "comPackage"){
+				if(data.length>0){
+					for (var i in data) {
+						if(data[i].whether=="未合包"){
+							if(i==0){
+								ids=data[i].packageId;
+							}else{
+								ids=ids+"-"+data[i].packageId;
+							}
+						}
+					}
+					$.post('comPackage.action','ids='+ids,function(msg){
+						if(msg=="合包成功"){
+							alert("修改合包状态");
+						}
+					})
+				}else{
+					layer.msg("请选择包裹");
+				}
 			}
 		})
 	

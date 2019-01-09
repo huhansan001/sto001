@@ -73,7 +73,7 @@ public class PackageAction {
 	 */
 	@RequestMapping("updateState.action")
 	public @ResponseBody  String updateState(String ids) {
-		packageService.updateState(ids+"id");
+		packageService.updateState(ids);
 		return "ok";
 
 	}
