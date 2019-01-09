@@ -68,6 +68,7 @@ public void updateState(String ids) {
 		packageMapper.updateState(idss[i],"审核通过");
 	}
 }
+
 /**
  * 功能:修改审核状态
  * @param packages
