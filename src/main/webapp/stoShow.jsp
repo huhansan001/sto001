@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>申通后台管理系统</title>
+<link rel="shortcut icon" href="imgs/STO.jpg"/>
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport"
@@ -118,8 +119,8 @@ iframe {
 	<script>
 		$(function(){
 			var res=getCookie($(".layui-nav-child").attr("id"));
-			$("#myImg").attr("src","/imgs/"+res);
-			$('#demo1').attr('src',"/imgs/"+res);
+			$("#myImg").attr("src","http://127.0.0.1:8080/stoMaven/imgs/"+res);
+			$('#demo1').attr('src',"http://127.0.0.1:8080/stoMaven/imgs/"+res);
 		});
 		layui.use(['layer','upload','jquery'], function() {
 			var $ = layui.jquery,

@@ -115,11 +115,11 @@ public class PositionInfoService {
 	public void insertPositions(Positions positions) {
 		positionInfoMapper.insertPositions(positions);
 	}
-	/*public static void main(String[] args) {
-		String str="甘肃省/甘南藏族自治州/临潭县";
+	public static void main(String[] args) {
+		String str="甘肃省/甘南藏大的萨达是的族自治州/临潭县";
 		//System.out.println(str.lastIndexOf("/"));
-		//System.out.println(str.substring(str.lastIndexOf("/")+1));
+		System.out.println(str.substring(str.indexOf("/")+1,str.lastIndexOf("/")));
 		//包含
 		//System.out.println(str.contains("临潭县"));
-	}*/
+	}
 }

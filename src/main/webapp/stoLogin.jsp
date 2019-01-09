@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>申通后台登录</title>
+<link rel="shortcut icon" href="imgs/STO.jpg"/>
 <!-- Custom Theme files -->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- Custom Theme files -->

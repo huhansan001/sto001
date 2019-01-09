@@ -172,7 +172,7 @@ public class EmpAdminAction {
 		String myFileName = file.getOriginalFilename();// 文件原名称
 		 stoEmpService.updateEmpImgByEmpNo(myFileName, empNo);
 		InputStream input=file.getInputStream();
-		 OutputStream out=new FileOutputStream("E:\\Spring-workspace-sts-3.9.6.RELEASE\\stoMaven\\src\\main\\webapp\\imgs\\"+myFileName);
+		 OutputStream out=new FileOutputStream("C:\\Users\\Administrator\\git\\sto001\\src\\main\\webapp\\imgs\\"+myFileName);
 		 byte[] bytes=new byte[1024];
 		 int len=-1;
 		while((len=input.read(bytes))!=-1) {
