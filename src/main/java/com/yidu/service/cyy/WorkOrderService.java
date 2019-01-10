@@ -65,7 +65,15 @@ public class WorkOrderService {
 	public void updateWork(WorkOrder workOrder){
 		workOrderMapper.updateWork(workOrder);
 	}
+	public void insertData(String  empNo,String packageId,String sendTime,String worksheet ){
+		workOrderMapper.insertData(empNo, packageId, sendTime,worksheet);
+	}
+	public void updateworksheet(String packageId){
+		workOrderMapper.updateworksheet(packageId);
+	}
 }
+
+
 
 
 

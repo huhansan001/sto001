@@ -51,12 +51,25 @@
 		 //头工具栏事件
 		  table.on('toolbar(workOrder)', function(obj){
 		    var checkStatus = table.checkStatus(obj.config.id);
-		    switch(obj.event){
-		      case 'sendPage':
-		        var data = checkStatus.data;
+		    var data = checkStatus.data;
+		    var data2= obj.data;
+		    var worksheet="";
+		    var packageId="";
+		    if(obj.event=='sendPage'){
+		    	if(data.length>0){
+		    		worksheet=data[0].worksheet;
+		    		packageId=data[0].packageId;
+		    		if(worksheet=="派件中"){
+		    			$.post("updateworksheet.action","packageId="+packageId	,window.location.href = "workOrder.jsp");//更改状态
+		    			//layer.msg("yes"+packageId);
+		    		}
+		    	}else{
+		    		layer.msg("请至少选择一条数据");
+		    	}
+		    }
+		 
 		       // layer.alert(JSON.stringify(data));
-		       layer.msg('派件了：'+ data.length + ' 个');
-		      break;
+		  //     layer.msg('派件了：'+ data.length + ' 个'+worksheet);
 		     /*  case 'getCheckLength':
 			        var data = checkStatus.data;
 			        layer.msg('选中了：'+ data.length + ' 个');
@@ -64,7 +77,6 @@
 		     	 case 'isAll':
 		        	layer.msg(checkStatus.isAll ? '全选': '未全选');
 		     		 break; */
-		    };
 		  });
 					
 		 

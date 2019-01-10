@@ -1,6 +1,7 @@
 package com.yidu.dao.cyy;
 import java.util.List;
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -29,7 +30,11 @@ public void deleteWork(WorkOrder workOrder);
 	 *功能：根据包裹id修改订单信息
 	 */
 @Update("update workorder_cyy set empNo=#{empNo},sendTime=#{sendTime},worksheet=#{worksheet} WHERE packageId=#{packageId}")
-
 public void updateWork(WorkOrder workOrder);
 
+@Insert("INSERT INTO workorder_cyy(packageId,empNo,sendTime,worksheet) VALUES(#{packageId},#{empNo},#{sendTime},#{worksheet})")
+public int insertData(@Param("empNo")String  empNo,@Param("packageId")String packageId,@Param("sendTime")String sendTime,@Param("worksheet")String worksheet );
+
+@Update("UPDATE workorder_cyy SET worksheet='已派发' WHERE packageId=#{packageId}")
+public void updateworksheet(@Param("packageId") String packageId);
 }
