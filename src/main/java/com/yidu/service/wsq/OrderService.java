@@ -9,6 +9,11 @@ import org.springframework.stereotype.Service;
 import com.yidu.bean.wsq.StoWorkOrder_wsq;
 import com.yidu.dao.wsq.OrderMapper;
 
+/**
+ * 描述：业务表的业务层
+ * @author 文思晴
+ * @date2018年12月22日下午3:30:56
+ */
 @Service
 public class OrderService {
 

@@ -2,7 +2,11 @@ package com.yidu.bean.wsq;
 
 import java.io.Serializable;
 import org.springframework.stereotype.Component;
-
+/**
+ *  描述:业务表的实体类
+ * @author 文思晴
+ * @date2018年12月22日下午3:54:56
+ */
 @Component
 public class StoWorkOrder_wsq implements Serializable{
 	

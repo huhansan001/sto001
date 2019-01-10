@@ -18,17 +18,14 @@
 	<!-- 添加一个新增按钮 -->
 	<script type="text/html" id="toolbarDemo">
   <div class="layui-btn-container">
-    <button class="layui-btn layui-btn-sm" lay-event="insert"><i class="layui-icon">&#xe654;</i>新增</button>
+    <button class="layui-btn layui-btn-sm" lay-event="insert">收件</button>
   </div>
-<div class="layui-btn-container"style="margin-top:-40px; margin-left:80px;">
-    <button class="layui-btn" lay-event="shoujian" style="height:30px; line-height:30px;">收件</button> 
-</div>
 	</script>
 	<script type="text/html" id="barDemo">
   		<a class="layui-btn layui-btn-xs" lay-event="edit"><i class="layui-icon">&#xe642;</i>确认编辑</a>
   		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon">&#xe640;</i>删除</a>
 	</script>
-	<!-- 新增所有的表单  -->
+	<!-- 新增所有的表单 -->
 	<div class="layui-row" id="senderPnal" style="display: none;">
 		<div class="layui-col-md10">
 			<form action="empAdd.action" class="layui-form" id="addEmp">
@@ -188,7 +185,6 @@
 					title : '订单号'
 				}, {
 					field : 'serviceHours',
-					edit : 'text',
 					title : '收件时间'
 				}, {
 					fixed : 'right',
@@ -215,10 +211,9 @@
 						}
 					});
 				}else if(obj.event === 'shoujian'){
-					var checkStatus = table.checkStatus('sender')
+					 var checkStatus = table.checkStatus('sender')
 					, data = checkStatus.data;
-					 $.post("selectid.action", data[0],function(){window.location.href = "StoOrder.jsp"}); 
-					
+					 $.post("selectid.action", data[0],function(){window.location.href = "StoOrder.jsp"});  			 
 				}
 			})
 			table.on('edit(sender)', function(objs) {
@@ -236,7 +231,7 @@
 					layer.confirm('真的删除行么', function(index){
 					obj.del();
 			        layer.close(index);
-					});
+				  });
 				}
 			});
 		});

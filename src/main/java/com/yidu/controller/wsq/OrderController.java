@@ -2,7 +2,7 @@ package com.yidu.controller.wsq;
 
 
 import java.util.Map;
-
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.yidu.bean.wsq.StoWorkOrder_wsq;
 import com.yidu.service.wsq.OrderService;
 
+/**
+ * 描述：业务表的控制层
+ * @author 文思晴
+ *@date2018年12月22日下午3:59:56
+ */
 @Controller
 public class OrderController {
 	@Autowired
@@ -38,9 +43,9 @@ public class OrderController {
 	 */
 	@RequestMapping("insert.action")
 	public @ResponseBody String insertuser(StoWorkOrder_wsq order) {
-		
-		
-		//System.out.println(order.toString());
+		System.out.println(order.toString());
+		order.setWorkerNumber(new Random().nextInt(99999999)+10000000);
+		order.setServiceHours("未处理");
 		int	 temp = orderservice.insert(order);
 		System.out.println(temp+"===值"+order);
 		return "添加成功";

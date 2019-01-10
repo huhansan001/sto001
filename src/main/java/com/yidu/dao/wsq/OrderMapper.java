@@ -11,6 +11,11 @@ import org.springframework.stereotype.Repository;
 
 import com.yidu.bean.wsq.StoWorkOrder_wsq;
 
+/**
+ * 描述：业务表的增删改查
+ * @author 文思晴
+ *@date2018年12月22日下午4:54:56
+ */
 @Repository
 public interface OrderMapper {
 	
@@ -19,15 +24,16 @@ public interface OrderMapper {
 	 */
 	@Select ("select * from workorder_wsq")
 	public List<StoWorkOrder_wsq> selectWorkOrder_wsqAll();
+	
 	/**
-	 * 根据ID号查询用户信息
+	 * 根据ID号查询用户信息7
 	 */
 	@Select ("select * from workorder_wsq where workerNumber=#{workerNumber}")
 	public List<StoWorkOrder_wsq> selectid(StoWorkOrder_wsq workerNumber);
+	
 	/**
 	 * 新增一条信息
 	 */
-
 	@Insert("INSERT INTO workorder_wsq (workerNumber,employeeNumber,orderNumber,serviceHours) VALUES (#{workerNumber},#{employeeNumber},#{orderNumber},#{serviceHours})")
 	public int insertplace(StoWorkOrder_wsq user);
 	
