@@ -67,9 +67,7 @@
 		    		layer.msg("请至少选择一条数据");
 		    	}
 		    }
-		    	
-		       
-
+		 
 		       // layer.alert(JSON.stringify(data));
 		  //     layer.msg('派件了：'+ data.length + ' 个'+worksheet);
 		     /*  case 'getCheckLength':
