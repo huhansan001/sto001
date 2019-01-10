@@ -60,9 +60,14 @@
 		    		worksheet=data[0].worksheet;
 		    		packageId=data[0].packageId;
 		    		if(worksheet=="派件中"){
+		    			
 		    			$.post("updateworksheet.action","packageId="+packageId	,window.location.href = "workOrder.jsp");//更改状态
 		    			//layer.msg("yes"+packageId);
+		    			
+		    		}else{
+		    			layer.msg("已派发");
 		    		}
+		    		
 		    	}else{
 		    		layer.msg("请至少选择一条数据");
 		    	}
