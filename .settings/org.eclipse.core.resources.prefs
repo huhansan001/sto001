@@ -1,5 +1,13 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/yidu/bean/zsh/address_lql_zsh.java=UTF-8
+encoding//src/main/java/com/yidu/bean/zsh/userSender_zsh.java=UTF-8
 encoding//src/main/java/com/yidu/controller/lyq/PackageAction.java=UTF-8
+encoding//src/main/java/com/yidu/controller/zsh/AddressBackgroundAcion.java=UTF-8
+encoding//src/main/java/com/yidu/controller/zsh/UserSenderBackgroundAction.java=UTF-8
 encoding//src/main/java/com/yidu/dao/lyq=UTF-8
 encoding//src/main/java/com/yidu/dao/lyq/PackageMapper.java=UTF-8
+encoding//src/main/java/com/yidu/dao/zsh/addressBackground_zsh.java=UTF-8
+encoding//src/main/java/com/yidu/dao/zsh/userSenderBackground_zsh.java=UTF-8
 encoding//src/main/java/com/yidu/service/lyq/PackageService.java=UTF-8
+encoding//src/main/java/com/yidu/service/zsh/AddressBackgroundSirvice_zsh.java=UTF-8
+encoding//src/main/java/com/yidu/service/zsh/UserSenderBackgroundService_zsh.java=UTF-8
