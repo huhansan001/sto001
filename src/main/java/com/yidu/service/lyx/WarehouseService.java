@@ -61,5 +61,12 @@ public class WarehouseService {
 		waehouse.deletedistribute(Warehouse);
 		
 	}
+	 /**
+	  * 功能：实现修改
+	  * @return
+	  */
+	public void updatewhether(String packageId, String  courier,String whether) {
+		waehouse.updatewhether(packageId,courier,whether);
+	}
 }
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,25 +15,31 @@
 <title>仓库管理</title>
 </head>
 <body>
+	<%!HttpServletRequest request;
+	HttpServletResponse response;%>
+	<%
+		if (request.getSession().getAttribute("empName") == null) {
+			response.sendRedirect(request.getContextPath() + "/selectServiceTableCourier.action?type=2");
+		}
+	%>
 	<table class="layui-hide" id="distribute" lay-filter="distribute"></table>
 	<!-- 添加一个新增按钮 -->
 	<script type="text/html" id="toolbarDemo">
-  <div class="layui-btn-container">
-    <button class="layui-btn layui-btn-sm" lay-event="comPackage"><i class="layui-icon">&#xe654;</i>合包</button>   
-</div>
+
     <!--选择派件员派件-->
-         <form class="layui-form" action=""style="width: 371px;position: absolute;left: 70px;bottom: -9px;">
-        <div class="layui-form-item">
-       <label style="width: 100px;" class="layui-form-label">选择派件员</label>
-      <div class="layui-input-inline">
-     <select name="interest" lay-filter="aihao">
-    </select>
-   </div>
- </div>
-	<!-- 添加一个发送按钮 -->
-  <button type="button" lay-submit=""
- class="layui-btn layui-btn-danger
- layui--btn-sm" style="position: absolute;bottom: 14px;left: 300px;">发送</button>
+        <form class="layui-form" action="" style="position:absolute;left:400px;bottom:-12px;">
+		 <div class="layui-form-item">
+    	<div class="layui-input-inline">
+    	 <select name="courier" id="courier" lay-filter="courier">
+       		<option value="" class="select">请选择收件员</option>
+			<c:forEach items="${empName}" var="x">
+			<option value='${x.empNo}'  class="selects">${x.empName}</option>
+			</c:forEach>
+      	</select>
+   	 	</div>
+		<button type="button" lay-submit=""class="layui-btn layui-btn-warm layui-btn-stm" lay-event="paijian" id="paijian" ">派件</button>
+  		</div>
+</form>
  <!--添加一个合包按钮>
 <div>
   <button type="button" lay-submit=""
@@ -87,120 +94,161 @@
 			</form>
 		</div>
 	</div>
+	<%
+		request.getSession().setAttribute("empName", null);
+	%>
 </body>
 <script>
 	layui
 			.use(
-					[ 'form', 'element', 'layedit', 'jquery', 'layer','laydate' ],
+					[ 'form', 'element', 'layedit', 'jquery', 'layer',
+							'laydate' ],
 					function() {
 						//得到所有组件
-						var form = layui.form,
-						layer = layui.layer,
-						element = layui.element,
-						table = layui.table,
-						$ = layui.jquery,
-						laydate = layui.laydate;
+						var form = layui.form, layer = layui.layer, element = layui.element, table = layui.table, $ = layui.jquery, laydate = layui.laydate;
 						//form表单提交监听事件
-						form.on('submit(saveSender)', function(data) {
-							$.post('insertSenders.action', data.field, function(
-									msg) {
-								layer.msg(msg);
-								window.location.href = "stoWarehouse.jsp";
-							});
-						});
+						form
+								.on(
+										'submit(saveSender)',
+										function(data) {
+											$
+													.post(
+															'insertSenders.action',
+															data.field,
+															function(msg) {
+																layer.msg(msg);
+																window.location.href = "stoWarehouse.jsp";
+															});
+										});
 					});
 	//表格数据填充
-	layui.use([ 'table', 'laypage' ], function() {
-		var table = layui.table;
-		var laypage = layui.laypage;
-		table.render({
-			elem : '#distribute',
-			url : 'warehouses.action',
-			toolbar : '#toolbarDemo',
-			title : '包裹',
-			cols : [ [ {
-				type : 'numbers'
-			}, {
-				type : 'checkbox'
+	layui
+			.use(
+					[ 'table', 'laypage' ],
+					function() {
 
-			}, {
-				field : 'packageId',
-				title : '包裹id',
-			}, {
-				field : 'courier',
-				title : '派件人',
+						var table = layui.table;
+						var laypage = layui.laypage;
+						table.render({
+							elem : '#distribute',
+							url : 'warehouses.action',
+							toolbar : '#toolbarDemo',
+							title : '包裹',
+							cols : [ [ {
+								type : 'numbers'
+							}, {
+								type : 'checkbox'
 
-			}, {
-				field : 'whether',
-				title : '合包状态',
+							}, {
+								field : 'packageId',
+								title : '包裹id',
+							}, {
+								field : 'courier',
+								title : '派件人',
 
-			}, {
-				field : 'unloading',
-				edit : 'text',
-				title : '卸货人',
-			},{
-				field : 'right',
-				title : '操作',
-				toolbar : '#barDemo',
-			} ] ],
-			page : true
-		});
-		//监听行工具事件
-		table.on('toolbar(distribute)', function(obj) {
-			var checkStatus = table.checkStatus(obj.config.id),data = checkStatus.data,ids="";
-			if (obj.event === 'insert') {
-				layer.open({
-					type : 1,
-					title : '新增',
-					anim : 3,
-					content : $("#senderPnal"),
-					area : [ '400px', '650px' ],
-					cancel : function() {
-						$("#senderPnal").css({
-							"display" : "none"
+							}, {
+								field : 'whether',
+								title : '是否派件',
+
+							}, {
+								field : 'unloading',
+								edit : 'text',
+								title : '卸货人',
+							}, {
+								field : 'right',
+								title : '操作',
+								toolbar : '#barDemo',
+							} ] ],
+							page : true
 						});
-					}
-				});
-			}else if(obj.event === "comPackage"){
-				if(data.length>0){
-					for (var i in data) {
-						if(data[i].whether=="未合包"){
-							if(i==0){
-								ids=data[i].packageId;
-							}else{
-								ids=ids+"-"+data[i].packageId;
-							}
-						}
-					}
-					$.post('comPackage.action','ids='+ids,function(msg){
-						if(msg=="合包成功"){
-							alert("修改合包状态");
-						}
-					})
-				}else{
-					layer.msg("请选择包裹");
-				}
-			}
-		})
-	
-		table.on('edit(distribute)', function(objs) {
-			layer.msg("编辑一行完毕后，请点击 右侧的 确认编辑");
-		});
-		//修改信息
-	table.on('tool(distribute)', function(obj) {
-			var data = obj.data;
-			if (obj.event === 'edit') {
-				layer.msg("编辑成功！");
-				$.post("updateSenders.action", data);
-				layer.msg("编辑成功！");
-				//删除信息
-			} else if (obj.event === 'del') {
-				$.post("deletedistribute.action", data, function(msg) {
-					layer.msg(msg);
-					window.location.href = "stoWarehouse.jsp";
-				});
-			   layer.msg("删除成功！");
-			}
-		});
-	});
+						//监听行工具事件
+						table
+								.on(
+										'toolbar(distribute)',
+										function(obj) {
+											var checkStatus = table
+													.checkStatus(obj.config.id), datas = checkStatus.data;
+											var data = obj.data;
+											if (obj.event === 'insert') {
+												layer
+														.open({
+															type : 1,
+															title : '新增',
+															anim : 3,
+															content : $("#senderPnal"),
+															area : [ '400px',
+																	'650px' ],
+															cancel : function() {
+																$("#senderPnal")
+																		.css(
+																				{
+																					"display" : "none"
+																				});
+															}
+														});
+											} else if (obj.event === "paijian") {
+												if (datas.length > 0) {
+													if (datas.length < 2) {
+														//派件员id
+														var empNo = $(
+																"#courier")
+																.val();
+														if (empNo != "") {
+															var packageId = "";
+															var whether = "";//是否派件
+															packageId = datas[0].packageId;
+															whether = datas[0].whether;
+															if (whether == "未合包") {
+																$
+																		.post(
+																				"updatewhether1.action",
+																				"packageId="
+																						+ packageId
+																						+ "&courier="
+																						+ empNo,
+																				window.location.href = "stoWarehouse.jsp");//更改状态
+															} else {
+															}
+														} else {
+															layer
+																	.msg("请选择派件员！");
+														}
+													} else {
+														layer.msg("只能选择一个包裹！");
+													}
+												} else {
+													layer.msg("抱歉,你没有选中数据！");
+												}
+											}
+										})
+
+						table.on('edit(distribute)', function(objs) {
+							layer.msg("编辑一行完毕后，请点击 右侧的 确认编辑");
+						});
+						//修改信息
+						table
+								.on(
+										'tool(distribute)',
+										function(obj) {
+											var data = obj.data;
+											if (obj.event === 'edit') {
+												layer.msg("编辑成功！");
+												$.post("updateSenders.action",
+														data);
+												layer.msg("编辑成功！");
+												//删除信息
+											} else if (obj.event === 'del') {
+												$
+														.post(
+																"deletedistribute.action",
+																data,
+																function(msg) {
+																	layer
+																			.msg(msg);
+																	window.location.href = "stoWarehouse.jsp";
+																});
+												layer.msg("删除成功！");
+											}
+										});
+					});
 </script>

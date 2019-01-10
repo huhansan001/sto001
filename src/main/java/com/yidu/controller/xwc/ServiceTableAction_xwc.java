@@ -1,8 +1,6 @@
 package com.yidu.controller.xwc;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,8 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.yidu.bean.xwc.ServiceTable_xwc;
 import com.yidu.service.xwc.ServiceTableService_xwc;
 /**
@@ -85,11 +81,14 @@ public class ServiceTableAction_xwc {
 	 * @return
 	 */
 	@RequestMapping("selectServiceTableCourier.action")
-	public  void selectServiceTableCourier(HttpServletRequest request,HttpServletResponse response){
+	public  void selectServiceTableCourier(HttpServletRequest request,HttpServletResponse response,int type){
 		//调用业务层的方法
 		request.getSession().setAttribute("empName", serviceTableService_xwc.selectServiceTableCourier());
 		try {
+			if(type==1)
 			response.sendRedirect("SeviceTable_xwc.jsp");
+			else
+			response.sendRedirect("stoWarehouse.jsp");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -55,6 +55,11 @@ public interface WarehouseMapper  {
 	 */	
 	@Delete("delete from warehouse_lyx where packageId=#{packageId}")
 	public void deletedistribute(Warehouse warehouseMapper);
+	/**
+	 *�޸ĺϰ�״̬
+	 */
+	@Update("UPDATE warehouse_lyx SET courier=#{courier},whether=#{whether} WHERE packageId=#{packageId}")
+	public void updatewhether(@Param("packageId")String packageId, @Param("courier")String  courier, @Param("whether")String whether);	
 }
 
 

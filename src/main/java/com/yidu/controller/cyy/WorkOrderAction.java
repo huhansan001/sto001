@@ -50,4 +50,10 @@ public class WorkOrderAction {
 		workOrderService.updateWork(workOrder);
 		return "ok";
 	}
+	@RequestMapping("updateworksheet.action")
+	public @ResponseBody String updateworksheet( String packageId) {
+		System.out.println(packageId);
+		workOrderService.updateworksheet(packageId);
+		return "ok";
+	}
 }
