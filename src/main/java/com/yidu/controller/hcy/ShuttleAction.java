@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.yidu.bean.hcy.Routing;
 import com.yidu.bean.hcy.Shuttle;
+import com.yidu.service.hcy.RoutingService;
 import com.yidu.service.hcy.ShuttleService;
 
 /**
@@ -27,6 +29,13 @@ import com.yidu.service.hcy.ShuttleService;
 public class ShuttleAction {
 	@Autowired 
 	private ShuttleService shuttleService;
+
+	//调用路由表的数据对象
+	@Autowired
+	private Routing routing;
+	//调用路由表的业务层
+	@Autowired
+	private RoutingService routingService;
 	/**
 	 * 
 	 * @Explain:分页合包
@@ -37,7 +46,7 @@ public class ShuttleAction {
 	public @ResponseBody Map<String, Object> pageShuttle(String page,String limit,HttpSession session){
 		return shuttleService.pageShuttle(page,limit);
 	}
-	
+
 	/**
 	 * 
 	 * @Explain:新增合包
@@ -47,7 +56,7 @@ public class ShuttleAction {
 	 */
 	@RequestMapping("insShuttle.action")
 	public @ResponseBody int insShuttle(@ModelAttribute Shuttle shuttle){
-			System.out.println(shuttle.toString());
+		System.out.println(shuttle.toString());
 		return shuttleService.insShuttle(shuttle);
 	}
 	/**
@@ -82,6 +91,13 @@ public class ShuttleAction {
 	public @ResponseBody String depart(@RequestParam(value="shuttleId[]") Integer[] shuttleId) {
 		List<Integer> list= Arrays.asList(shuttleId);
 		for (Integer i : list) {
+			//给路由表的班车id赋值
+			routing.setShuttleId(i);
+			//给路由表的路由状态赋值
+			routing.setRoutingState("转运中心已发车");
+			//调用路由表业务层的新增方法
+			routingService.insertRouting(routing);
+
 			shuttleService.updateStation(i);
 		}
 		return "ok";
@@ -94,6 +110,11 @@ public class ShuttleAction {
 	 */
 	@RequestMapping("nextStie.action")
 	public @ResponseBody String nextStie(int shuttleId,String station,int index) {
+		//给路由表的班车id赋值
+		routing.setShuttleId(shuttleId);
+		//给路由表的路由状态赋值
+		routing.setRoutingState(station+"已发车");
+		//调用路由表业务层的新增方法
 		return shuttleService.updateStationById(shuttleId,station,index);
 	}
 }

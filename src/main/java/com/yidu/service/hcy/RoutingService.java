@@ -67,4 +67,17 @@ public class RoutingService {
 	public int upRouting(Routing routing) {
 		return routingMapper.upRouting(routing);
 	}
+	
+	/**
+	 * 
+	 * function:新增路由表数据
+	 * name :Quiet
+	 * @param routing 路由表数据对象
+	 * @return
+	 * @date 2019年1月9日下午3:56:31
+	 */
+	public int insertRouting(Routing routing) {
+		//调用dao层新增路由表的方法
+		return routingMapper.insertRouting(routing);
+	}
 }

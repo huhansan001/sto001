@@ -53,4 +53,15 @@ public interface RoutingMapper {
 	 */
 	@Update("UPDATE routing_hcy SET shuttleId=#{shuttleId},routingState=#{routingState},shuStaTime=#{shuStaTime} WHERE id=${id}")
 	public int upRouting(Routing routing);
+	
+	/**
+	 * 
+	 * function:新增路由表数据
+	 * name :Quiet
+	 * @param routing 路由表数据对象
+	 * @return
+	 * @date 2019年1月9日下午3:53:47
+	 */
+	@Insert("INSERT INTO routing_hcy(shuttleId,routingState,shuStaTime) VALUES(#{shuttleId},#{routingState},#{shuStaTime})")
+	public int insertRouting(Routing routing);
 }
