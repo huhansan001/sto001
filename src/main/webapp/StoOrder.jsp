@@ -142,6 +142,7 @@
 		</div>
 	</div>
 	<script>
+	var ids="";
 		layui.use([ 'form', 'element', 'layedit', 'jquery', 'layer' ],
 						function() {
 							//得到所有组件
@@ -149,7 +150,7 @@
 							//form表单提交监听事件
 							form.on('submit(saveSender)', function(data) {
 								var addEmp=$("#addEmp").serialize();
-								//alert(addEmp)
+								alert(addEmp)
 								window.location.href = "insertpackage.action?"+addEmp+"&ids="+ids;
 									 //alert(data.field.auditStatus);
 								  /* $.post('insertpackage.action', data.field,function(){
@@ -198,7 +199,7 @@
 			});
 			//监听行工具事件
 			table.on('toolbar(sender)', function(obj) {//shoujian
-				var checkStatus = table.checkStatus(obj.config.id), data = checkStatus.data,ids="";
+				var checkStatus = table.checkStatus(obj.config.id), data = checkStatus.data;
 				if (obj.event === 'insert') {
 					if(data.length>0){
 						//得到工单号

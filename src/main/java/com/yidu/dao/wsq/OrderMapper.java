@@ -55,5 +55,10 @@ public interface OrderMapper {
 	@Update("update workorder_wsq SET employeeNumber=#{employeeNumber},orderNumber=#{orderNumber},serviceHours=#{serviceHours} WHERE workerNumber=#{workerNumber}")
 	public void uodates(StoWorkOrder_wsq workorder);
 	
+	/**
+	 * 根据工单号修改状态
+	 */
+	@Update("update workorder_wsq SET serviceHours=#{serviceHours} WHERE workerNumber=#{workerNumber}")
+	public void uodate(@Param("serviceHours")String serviceHours, @Param("workerNumber")String workerNumber);
 }
 	

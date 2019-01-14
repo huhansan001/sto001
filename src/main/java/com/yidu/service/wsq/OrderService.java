@@ -36,8 +36,17 @@ public class OrderService {
 	public void delectOrderid (StoWorkOrder_wsq orderid) {
 		ordermap.delectOrderid(orderid);
 	}
+	/**
+	 *  修改
+	 */
 	public void uodates(StoWorkOrder_wsq workorder) {
 		ordermap.uodates(workorder);
+	}
+	/**
+	 * 根据工单号修改状态
+	 */
+	public void uodate(String serviceHours,String workerNumber) {
+		ordermap.uodate(serviceHours, workerNumber);
 	}
 	public Map<String,Object> selectid(StoWorkOrder_wsq workerNumber){
 		Map<String,Object> map = new HashMap<String,Object>();

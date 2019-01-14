@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yidu.dao.lyq.PackageMapper;
+import com.yidu.service.wsq.OrderService;
 
 @Service
 /**
@@ -19,6 +20,9 @@ import com.yidu.dao.lyq.PackageMapper;
 public class PackageService {
 @Autowired
 private PackageMapper packageMapper;
+
+@Autowired
+private OrderService OrderService;
 /**
  * 功能:查询所有和分页
  * @param page
@@ -39,9 +43,10 @@ public Map<String, Object> selectpackageAll(String page,String rows){
  * @param packages
  */
 public int insertpackage(com.yidu.bean.lyq.Package packages,String ids) {
-	/*for (int i = 0; i < ids.split("-").length; i++) {
+	for (int i = 0; i < ids.split("-").length; i++) {
 		//循环调用修改
-	}*/
+		OrderService.uodate("已处理", ids);
+	}
 	int insertpackage = packageMapper.insertpackage(packages);
 	return insertpackage;
 }

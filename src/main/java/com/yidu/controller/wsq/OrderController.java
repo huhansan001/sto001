@@ -56,7 +56,6 @@ public class OrderController {
 	@RequestMapping("delectOrder.action")
 	public @ResponseBody void delectOrderid (@ModelAttribute StoWorkOrder_wsq orderid) {
 		orderservice.delectOrderid(orderid);
-		//System.out.println(orderid);
 	}
 	/**
 	 * ¸ù¾ÝidÐÞ¸Ä
@@ -64,6 +63,5 @@ public class OrderController {
 	@RequestMapping("upOrder.action")
 	public @ResponseBody void upOrderid (@ModelAttribute StoWorkOrder_wsq workorder) {
 		orderservice.uodates(workorder);		
-		//System.out.println(workorder.toString());
 	}
 }
