@@ -1,6 +1,8 @@
 package com.yidu.controller.hcy;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -95,6 +97,9 @@ public class ShuttleAction {
 			routing.setShuttleId(i);
 			//给路由表的路由状态赋值
 			routing.setRoutingState("转运中心已发车");
+			//给路由表的修改时间赋值
+			routing.setShuStaTime(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
+			System.out.println(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
 			//调用路由表业务层的新增方法
 			routingService.insertRouting(routing);
 
@@ -114,6 +119,9 @@ public class ShuttleAction {
 		routing.setShuttleId(shuttleId);
 		//给路由表的路由状态赋值
 		routing.setRoutingState(station+"已发车");
+		//给路由表的修改时间赋值
+		routing.setShuStaTime(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
+		System.out.println(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
 		//调用路由表业务层的新增方法
 		return shuttleService.updateStationById(shuttleId,station,index);
 	}
