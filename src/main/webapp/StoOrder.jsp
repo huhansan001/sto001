@@ -30,18 +30,14 @@
 		<div class="layui-col-md10">
 			<form action="empAdd.action" class="layui-form" id="addEmp">
 				<div class="layui-form-item">
-					<label class="layui-form-label">包裹id</label>
-					<div class="layui-input-block">
-						<input type="text" name="packageId" autocomplete="off"
+					<!-- <label class="layui-form-label">包裹id</label> -->
+						<input type="hidden" name="packageId" autocomplete="off"
 							class="layui-input">
-					</div>
 				</div>
 				<div class="layui-form-item">
-					<label class="layui-form-label">工单号</label>
-					<div class="layui-input-block">
-						<input type="text" name="workOrderNumber" autocomplete="off"
+					<!-- <label class="layui-form-label">工单号</label> -->
+						<input type="hidden" name="workOrderNumber" autocomplete="off"
 							class="layui-input">
-					</div>
 				</div>
 				<div class="layui-form-item">
 					<label class="layui-form-label">寄件人姓名</label>
@@ -146,17 +142,24 @@
 		</div>
 	</div>
 	<script>
+		var ids="";
 		layui.use([ 'form', 'element', 'layedit', 'jquery', 'layer' ],
 						function() {
 							//得到所有组件
 							var form = layui.form, layer = layui.layer, element = layui.element, table = layui.table, $ = layui.jquery;
 							//form表单提交监听事件
 							form.on('submit(saveSender)', function(data) {
-								$.post('insertpackage.action', data.field, function(
-										msg) {
-									layer.msg(msg);
-									window.location.href = "StoOrder.jsp";
-								});
+								var addEmp=$("#addEmp").serialize();
+								//alert(addEmp)
+								window.location.href = "insertpackage.action?"+addEmp+"&ids="+ids;
+									 //alert(data.field.auditStatus);
+								  /* $.post('insertpackage.action', data.field,function(){
+								 //});  
+								  alert(ids);
+								 /*  $.post('insertpackage.action', data.field,function(){
+										 alert(1);
+									}); */
+								 
 							});
 						});
 
@@ -185,7 +188,7 @@
 					title : '订单号'
 				}, {
 					field : 'serviceHours',
-					title : '收件时间'
+					title : '收件状态'
 				}, {
 					fixed : 'right',
 					title : '操作',
@@ -196,9 +199,39 @@
 			});
 			//监听行工具事件
 			table.on('toolbar(sender)', function(obj) {//shoujian
-				var data = obj.data;
+				var checkStatus = table.checkStatus(obj.config.id), data = checkStatus.data;
 				if (obj.event === 'insert') {
-					layer.open({
+					if(data.length>0){
+						//得到工单号
+						for (var i in data) {
+							if(data[i].serviceHours=="未处理"){
+								if(i==0){
+									ids=data[i].workerNumber;
+								}else{
+									ids=ids+"-"+data[i].workerNumber;
+								}
+							}
+						}
+						//
+						$("input[name='packageId']").val(parseInt(Math.random(100000)*999999));
+						$("input[name='workOrderNumber']").val(ids);
+						//打开面板
+						layer.open({
+							type : 1,
+							title : '收件',
+							anim : 6,
+							content : $("#senderPnal"),
+							area : [ '430px', '500px' ],
+							cancel : function() {
+								$("#senderPnal").css({
+									"display" : "none"
+								});
+							}
+						}); 
+					}else{
+						layer.msg("未选中")
+					}
+					/* layer.open({
 						type : 1,
 						title : '收件',
 						anim : 6,
@@ -209,7 +242,7 @@
 								"display" : "none"
 							});
 						}
-					});
+					}); */
 				}else if(obj.event === 'shoujian'){
 					 var checkStatus = table.checkStatus('sender')
 					, data = checkStatus.data;

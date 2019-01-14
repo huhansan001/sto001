@@ -40,8 +40,8 @@ public class PackageAction {
 	 * @return
 	 */
 	@RequestMapping("insertpackage.action")
-	public @ResponseBody int  insertpackage(@ModelAttribute com.yidu.bean.lyq.Package packages){
-		return packageService.insertpackage(packages);
+	public @ResponseBody int  insertpackage(@ModelAttribute com.yidu.bean.lyq.Package packages,String ids){
+		return packageService.insertpackage(packages,ids);
 	}
 	/**
 	 * 鍔熻兘:淇敼鏁版嵁

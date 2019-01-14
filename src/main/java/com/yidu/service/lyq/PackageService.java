@@ -38,8 +38,12 @@ public Map<String, Object> selectpackageAll(String page,String rows){
  * 功能:新增
  * @param packages
  */
-public int insertpackage(com.yidu.bean.lyq.Package packages) {
-	return packageMapper.insertpackage(packages);
+public int insertpackage(com.yidu.bean.lyq.Package packages,String ids) {
+	for (int i = 0; i < ids.split("-").length; i++) {
+		//循环调用修改
+	}
+	int insertpackage = packageMapper.insertpackage(packages);
+	return insertpackage;
 }
 /**
  * 功能:修改
