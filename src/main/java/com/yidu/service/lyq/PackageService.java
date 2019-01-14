@@ -39,9 +39,9 @@ public Map<String, Object> selectpackageAll(String page,String rows){
  * @param packages
  */
 public int insertpackage(com.yidu.bean.lyq.Package packages,String ids) {
-	for (int i = 0; i < ids.split("-").length; i++) {
+	/*for (int i = 0; i < ids.split("-").length; i++) {
 		//循环调用修改
-	}
+	}*/
 	int insertpackage = packageMapper.insertpackage(packages);
 	return insertpackage;
 }

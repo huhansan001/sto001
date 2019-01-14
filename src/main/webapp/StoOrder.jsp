@@ -142,7 +142,6 @@
 		</div>
 	</div>
 	<script>
-		var ids="";
 		layui.use([ 'form', 'element', 'layedit', 'jquery', 'layer' ],
 						function() {
 							//得到所有组件
@@ -199,7 +198,7 @@
 			});
 			//监听行工具事件
 			table.on('toolbar(sender)', function(obj) {//shoujian
-				var checkStatus = table.checkStatus(obj.config.id), data = checkStatus.data;
+				var checkStatus = table.checkStatus(obj.config.id), data = checkStatus.data,ids="";
 				if (obj.event === 'insert') {
 					if(data.length>0){
 						//得到工单号
@@ -213,21 +212,25 @@
 							}
 						}
 						//
-						$("input[name='packageId']").val(parseInt(Math.random(100000)*999999));
-						$("input[name='workOrderNumber']").val(ids);
-						//打开面板
-						layer.open({
-							type : 1,
-							title : '收件',
-							anim : 6,
-							content : $("#senderPnal"),
-							area : [ '430px', '500px' ],
-							cancel : function() {
-								$("#senderPnal").css({
-									"display" : "none"
-								});
-							}
-						}); 
+						if(ids!=""){
+							$("input[name='packageId']").val(parseInt(Math.random(100000)*999999));
+							$("input[name='workOrderNumber']").val(ids);
+							//打开面板
+							layer.open({
+								type : 1,
+								title : '收件',
+								anim : 6,
+								content : $("#senderPnal"),
+								area : [ '430px', '500px' ],
+								cancel : function() {
+									$("#senderPnal").css({
+										"display" : "none"
+									});
+								}
+							}); 
+						}else{
+							layer.msg("权处理的未订单")
+						}
 					}else{
 						layer.msg("未选中")
 					}
