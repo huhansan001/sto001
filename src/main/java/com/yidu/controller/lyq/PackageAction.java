@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.yidu.service.lyq.PackageService;
 import com.yidu.service.lyx.WarehouseService;
@@ -40,8 +41,9 @@ public class PackageAction {
 	 * @return
 	 */
 	@RequestMapping("insertpackage.action")
-	public @ResponseBody int  insertpackage(@ModelAttribute com.yidu.bean.lyq.Package packages,String ids){
-		return packageService.insertpackage(packages,ids);
+	public @ResponseBody ModelAndView  insertpackage(@ModelAttribute com.yidu.bean.lyq.Package packages,String ids){
+		 packageService.insertpackage(packages,ids);
+		return new ModelAndView("redirect:/StoOrder.jsp");
 	}
 	/**
 	 * 鍔熻兘:淇敼鏁版嵁
