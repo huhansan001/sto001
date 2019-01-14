@@ -200,7 +200,7 @@
 				if (obj.event === 'insert') {
 					layer.open({
 						type : 1,
-						title : '新增',
+						title : '收件',
 						anim : 6,
 						content : $("#senderPnal"),
 						area : [ '430px', '500px' ],
