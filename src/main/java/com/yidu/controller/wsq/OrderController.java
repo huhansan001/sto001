@@ -42,7 +42,7 @@ public class OrderController {
 	 *增加一个用户
 	 */
 	@RequestMapping("insert.action")
-	public @ResponseBody String insertuser(StoWorkOrder_wsq order) {
+	public @ResponseBody String insertuser(@ModelAttribute StoWorkOrder_wsq order) {
 		System.out.println(order.toString());
 		order.setWorkerNumber(new Random().nextInt(99999999)+10000000);
 		order.setServiceHours("未处理");

@@ -210,12 +210,16 @@
 								orderNumber = orderNumber+"-"+datas[i].orderNumber;
 							}
 							alert("员工编号："+empNo+"\n订单号:"+orderNumber);
+							$.post("insert.action","employeeNumber="+empNo+"&orderNumber="+orderNumber);
+							
+							layer.msg("laile ");
 						}else{
 							layer.msg("请选择派件员！");
 						}
 					}else{
 						layer.msg("抱歉,你没有选中数据！");
 					}
+					
 				}
 			})
 			table.on('edit(SeviceTable_xwc)', function(objs) {

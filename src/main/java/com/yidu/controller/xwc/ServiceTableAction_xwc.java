@@ -91,7 +91,6 @@ public class ServiceTableAction_xwc {
 		try {
 			response.sendRedirect("SeviceTable_xwc.jsp");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		//return  new ModelAndView("SeviceTable_xwc.jsp");

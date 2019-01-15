@@ -26,7 +26,7 @@ public interface OrderMapper {
 	public List<StoWorkOrder_wsq> selectWorkOrder_wsqAll();
 	
 	/**
-	 * 根据ID号查询用户信息7
+	 * 根据ID号查询用户信息
 	 */
 	@Select ("select * from workorder_wsq where workerNumber=#{workerNumber}")
 	public List<StoWorkOrder_wsq> selectid(StoWorkOrder_wsq workerNumber);

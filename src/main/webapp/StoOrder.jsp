@@ -259,7 +259,6 @@
 			table.on('tool(sender)', function(obj) {
 				var data = obj.data;
 				if (obj.event === 'edit') {
-					//layer.msg(JSON.stringify(data));
 					$.post("upOrder.action", data);
 					layer.msg("修改成功！")
 				} else if (obj.event === 'del') {
